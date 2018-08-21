@@ -1,0 +1,63 @@
+Script started on 2018-08-21 10:18:19-05:00
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m man gcc
+[?1049h[22;0;0t[?1h=GCC(1)                                GNU                               GCC(1)[m
+[m
+[1mNAME[0m[m
+       gcc - GNU project C and C++ compiler[m
+[m
+[1mSYNOPSIS[0m[m
+       gcc [[1m-c[0m|[1m-S[0m|[1m-E[0m] [[1m-std=[0m[4mstandard[24m][m
+           [[1m-g[0m] [[1m-pg[0m] [[1m-O[0m[4mlevel[24m][m
+           [[1m-W[0m[4mwarn[24m...] [[1m-Wpedantic[0m][m
+           [[1m-I[0m[4mdir[24m...] [[1m-L[0m[4mdir[24m...][m
+           [[1m-D[0m[4mmacro[24m[=[4mdefn[24m]...] [[1m-U[0m[4mmacro[24m][m
+           [[1m-f[0m[4moption[24m...] [[1m-m[0m[4mmachine-option[24m...][m
+           [[1m-o[0m [4moutfile[24m] [@[4mfile[24m] [4minfile[24m...[m
+[m
+       Only the most useful options are listed here; see below for the[m
+       remainder.  [1mg++[0m accepts mostly the same options as [1mgcc[0m.[m
+[m
+[1mDESCRIPTION[0m[m
+       When you invoke GCC, it normally does preprocessing, compilation,[m
+       assembly and linking.  The "overall options" allow you to stop this[m
+       process at an intermediate stage.  For example, the [1m-c[0m option says not[m
+       to run the linker.  Then the output consists of object files output by[m
+       the assembler.[m
+[7m Manual page gcc(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0t]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m cd ..
+]0;mcather@matthew-pc:~/projects[01;32m[mcather@matthew-pc[01;37m projects[01;32m]$[00m cd comp-3500/
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m pwd
+/home/mcather/projects/comp-3500
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m ls
+commands.script
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m mkdir -p /[K./parent/child
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m mv parent/child/[K .
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m touch test
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m rm test
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m rmdir parent/
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m chmod 777 child/
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m clear
+[3J[H[2J]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m top
+[?1h=[?25l[H[2J(B[mtop - 10:19:51 up 4 min,  1 user,  load average: 0.28, 0.43, 0.21(B[m[39;49m(B[m[39;49m[K
+[36mTasks:(B[m[39;49m[1m 169 (B[m[39;49m[36mtotal,(B[m[39;49m[1m   1 (B[m[39;49m[36mrunning,(B[m[39;49m[1m 168 (B[m[39;49m[36msleeping,(B[m[39;49m[1m   0 (B[m[39;49m[36mstopped,(B[m[39;49m[1m   0 (B[m[39;49m[36mzombie(B[m[39;49m(B[m[39;49m[K
+[36m%Cpu0  :(B[m[39;49m[1m  5.9 (B[m[39;49m[36mus,(B[m[39;49m[1m 11.8 (B[m[39;49m[36msy,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mni,(B[m[39;49m[1m 82.4 (B[m[39;49m[36mid,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mwa,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mhi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mst(B[m[39;49m(B[m[39;49m[K
+[36m%Cpu1  :(B[m[39;49m[1m  0.0 (B[m[39;49m[36mus,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msy,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mni,(B[m[39;49m[1m100.0 (B[m[39;49m[36mid,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mwa,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mhi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mst(B[m[39;49m(B[m[39;49m[K
+[36m%Cpu2  :(B[m[39;49m[1m  6.2 (B[m[39;49m[36mus,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msy,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mni,(B[m[39;49m[1m 93.8 (B[m[39;49m[36mid,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mwa,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mhi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mst(B[m[39;49m(B[m[39;49m[K
+[36m%Cpu3  :(B[m[39;49m[1m 11.8 (B[m[39;49m[36mus,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msy,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mni,(B[m[39;49m[1m 88.2 (B[m[39;49m[36mid,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mwa,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mhi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36msi,(B[m[39;49m[1m  0.0 (B[m[39;49m[36mst(B[m[39;49m(B[m[39;49m[K
+[36mKiB Mem :(B[m[39;49m[1m 16361136 (B[m[39;49m[36mtotal,(B[m[39;49m[1m 13330072 (B[m[39;49m[36mfree,(B[m[39;49m[1m  1287368 (B[m[39;49m[36mused,(B[m[39;49m[1m  1743696 (B[m[39;49m[36mbuff/cache(B[m[39;49m(B[m[39;49m[K
+[36mKiB Swap:(B[m[39;49m[1m 17997292 (B[m[39;49m[36mtotal,(B[m[39;49m[1m 17997292 (B[m[39;49m[36mfree,(B[m[39;49m[1m        0 (B[m[39;49m[36mused.(B[m[39;49m[1m 14890772 (B[m[39;49m[36mavail Mem (B[m[39;49m(B[m[39;49m[K
+[K
+[32m[7m  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND    (B[m[39;49m[K
+(B[m[39;49m[36m  465 root      20      769544 156704  52400 S  11.8   1.0   0:49.67 /usr/lib/+ (B[m[39;49m[K
+(B[m[39;49m[36m  362 dbus      20       33488   5052   3648 S   5.9   0.0   0:00.70 /usr/bin/+ (B[m[39;49m[K
+(B[m[39;49m[36m  651 mcather   20      809892  59700  45636 S   5.9   0.4   0:01.53 pamac-tray (B[m[39;49m[K
+(B[m[39;49m[36m 1275 mcather   20      445448  44060  28556 S   5.9   0.3   0:05.24 pamac-upd+ (B[m[39;49m[K
+(B[m[39;49m[36m 1294 root      20      465288  56644  13272 S   5.9   0.3   0:24.38 /usr/bin/+ (B[m[39;49m[K
+[J[?1l>[25;1H
+[?12l[?25h[K]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m who
+mcather  tty7         2018-08-21 05:15 (:0)
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m nproc
+4
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m exit
+exit
+
+Script done on 2018-08-21 10:20:16-05:00
