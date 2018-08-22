@@ -1,0 +1,111 @@
+Script started on 2018-08-21 11:13:00-05:00
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git init
+Initialized empty Git repository in /home/mcather/projects/comp-3500/project-1/.git/
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git ad [Kd *
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	[32mnew file:   commands.script[m
+	[32mnew file:   cpuinfo.txt[m
+	[32mnew file:   interrupts.txt[m
+	[32mnew file:   lspci.txt[m
+	[32mnew file:   meminfo.txt[m
+	[32mnew file:   simple[m
+	[32mnew file:   simple.c[m
+	[32mnew file:   task3.script[m
+	[32mnew file:   task4.script[m
+
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git commit -m ""I"n"i"t"[1P"[1P"[1P"[1P"I"n"i"t"i"a"l" "p"r"o"j"e"c"t" "c"o"m"m"i"t"[1P"[1P"[1P"[1P"[1P"[1P"c"o"m"m"i"t"
+[master (root-commit) 5ed9406] Initial project commit
+ 9 files changed, 401 insertions(+)
+ create mode 100644 commands.script
+ create mode 100644 cpuinfo.txt
+ create mode 100644 interrupts.txt
+ create mode 100644 lspci.txt
+ create mode 100644 meminfo.txt
+ create mode 100755 simple
+ create mode 100644 simple.c
+ create mode 100644 task3.script
+ create mode 100644 task4.script
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m cd ..
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m git clone https://github.com/libgit2/libgit2
+Cloning into 'libgit2'...
+remote: Counting objects: 83183, done.[K
+remote: Compressing objects:   0% (1/23636)   [Kremote: Compressing objects:   1% (237/23636)   [Kremote: Compressing objects:   2% (473/23636)   [Kremote: Compressing objects:   3% (710/23636)   [Kremote: Compressing objects:   4% (946/23636)   [Kremote: Compressing objects:   5% (1182/23636)   [Kremote: Compressing objects:   6% (1419/23636)   [Kremote: Compressing objects:   7% (1655/23636)   [Kremote: Compressing objects:   8% (1891/23636)   [Kremote: Compressing objects:   9% (2128/23636)   [Kremote: Compressing objects:  10% (2364/23636)   [Kremote: Compressing objects:  11% (2600/23636)   [Kremote: Compressing objects:  12% (2837/23636)   [Kremote: Compressing objects:  13% (3073/23636)   [Kremote: Compressing objects:  14% (3310/23636)   [Kremote: Compressing objects:  15% (3546/23636)   [Kremote: Compressing objects:  16% (3782/23636)   [Kremote: Compressing objects:  17% (4019/23636)   [Kremote: Compressing objects:  18% (4255/23636)   [Kremote: Compressing objects:  19% (4491/23636)   [Kremote: Compressing objects:  20% (4728/23636)   [Kremote: Compressing objects:  21% (4964/23636)   [Kremote: Compressing objects:  22% (5200/23636)   [Kremote: Compressing objects:  23% (5437/23636)   [Kremote: Compressing objects:  24% (5673/23636)   [Kremote: Compressing objects:  25% (5909/23636)   [Kremote: Compressing objects:  26% (6146/23636)   [Kremote: Compressing objects:  27% (6382/23636)   [Kremote: Compressing objects:  28% (6619/23636)   [Kremote: Compressing objects:  29% (6855/23636)   [Kremote: Compressing objects:  30% (7091/23636)   [Kremote: Compressing objects:  31% (7328/23636)   [Kremote: Compressing objects:  32% (7564/23636)   [Kremote: Compressing objects:  33% (7800/23636)   [Kremote: Compressing objects:  34% (8037/23636)   [Kremote: Compressing objects:  35% (8273/23636)   [Kremote: Compressing objects:  36% (8509/23636)   [Kremote: Compressing objects:  37% (8746/23636)   [Kremote: Compressing objects:  38% (8982/23636)   [Kremote: Compressing objects:  39% (9219/23636)   [Kremote: Compressing objects:  40% (9455/23636)   [Kremote: Compressing objects:  41% (9691/23636)   [Kremote: Compressing objects:  42% (9928/23636)   [Kremote: Compressing objects:  43% (10164/23636)   [Kremote: Compressing objects:  44% (10400/23636)   [Kremote: Compressing objects:  45% (10637/23636)   [Kremote: Compressing objects:  46% (10873/23636)   [Kremote: Compressing objects:  47% (11109/23636)   [Kremote: Compressing objects:  48% (11346/23636)   [Kremote: Compressing objects:  49% (11582/23636)   [Kremote: Compressing objects:  50% (11818/23636)   [Kremote: Compressing objects:  51% (12055/23636)   [Kremote: Compressing objects:  52% (12291/23636)   [Kremote: Compressing objects:  53% (12528/23636)   [Kremote: Compressing objects:  54% (12764/23636)   [Kremote: Compressing objects:  55% (13000/23636)   [Kremote: Compressing objects:  56% (13237/23636)   [Kremote: Compressing objects:  57% (13473/23636)   [Kremote: Compressing objects:  58% (13709/23636)   [Kremote: Compressing objects:  59% (13946/23636)   [Kremote: Compressing objects:  60% (14182/23636)   [Kremote: Compressing objects:  61% (14418/23636)   [Kremote: Compressing objects:  62% (14655/23636)   [Kremote: Compressing objects:  63% (14891/23636)   [Kremote: Compressing objects:  64% (15128/23636)   [Kremote: Compressing objects:  65% (15364/23636)   [Kremote: Compressing objects:  66% (15600/23636)   [Kremote: Compressing objects:  67% (15837/23636)   [Kremote: Compressing objects:  68% (16073/23636)   [Kremote: Compressing objects:  69% (16309/23636)   [Kremote: Compressing objects:  70% (16546/23636)   [Kremote: Compressing objects:  71% (16782/23636)   [Kremote: Compressing objects:  72% (17018/23636)   [Kremote: Compressing objects:  73% (17255/23636)   [Kremote: Compressing objects:  74% (17491/23636)   [Kremote: Compressing objects:  75% (17727/23636)   [Kremote: Compressing objects:  76% (17964/23636)   [Kremote: Compressing objects:  77% (18200/23636)   [Kremote: Compressing objects:  78% (18437/23636)   [Kremote: Compressing objects:  79% (18673/23636)   [Kremote: Compressing objects:  80% (18909/23636)   [Kremote: Compressing objects:  81% (19146/23636)   [Kremote: Compressing objects:  82% (19382/23636)   [Kremote: Compressing objects:  83% (19618/23636)   [Kremote: Compressing objects:  84% (19855/23636)   [Kremote: Compressing objects:  85% (20091/23636)   [Kremote: Compressing objects:  86% (20327/23636)   [Kremote: Compressing objects:  87% (20564/23636)   [Kremote: Compressing objects:  88% (20800/23636)   [Kremote: Compressing objects:  89% (21037/23636)   [Kremote: Compressing objects:  90% (21273/23636)   [Kremote: Compressing objects:  91% (21509/23636)   [Kremote: Compressing objects:  92% (21746/23636)   [Kremote: Compressing objects:  93% (21982/23636)   [Kremote: Compressing objects:  94% (22218/23636)   [Kremote: Compressing objects:  95% (22455/23636)   [Kremote: Compressing objects:  96% (22691/23636)   [Kremote: Compressing objects:  97% (22927/23636)   [Kremote: Compressing objects:  98% (23164/23636)   [Kremote: Compressing objects:  99% (23400/23636)   [Kremote: Compressing objects: 100% (23636/23636)   [Kremote: Compressing objects: 100% (23636/23636), done.[K
+Receiving objects:   0% (1/83183)   Receiving objects:   1% (832/83183)   Receiving objects:   2% (1664/83183)   Receiving objects:   3% (2496/83183)   Receiving objects:   4% (3328/83183)   Receiving objects:   5% (4160/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:   6% (4991/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:   7% (5823/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:   8% (6655/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:   9% (7487/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:  10% (8319/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:  11% (9151/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:  12% (9982/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:  13% (10814/83183), 1.03 MiB | 2.05 MiB/s   Receiving objects:  13% (11076/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  14% (11646/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  15% (12478/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  16% (13310/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  17% (14142/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  18% (14973/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  19% (15805/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  20% (16637/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  21% (17469/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  22% (18301/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  23% (19133/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  24% (19964/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  25% (20796/83183), 2.78 MiB | 2.77 MiB/s   Receiving objects:  26% (21628/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  27% (22460/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  28% (23292/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  29% (24124/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  30% (24955/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  31% (25787/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  32% (26619/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  33% (27451/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  34% (28283/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  35% (29115/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  36% (29946/83183), 5.78 MiB | 3.85 MiB/s   Receiving objects:  36% (30462/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  37% (30778/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  38% (31610/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  39% (32442/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  40% (33274/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  41% (34106/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  42% (34937/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  43% (35769/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  44% (36601/83183), 10.52 MiB | 5.25 MiB/s   Receiving objects:  45% (37433/83183), 16.36 MiB | 6.54 MiB/s   Receiving objects:  45% (37630/83183), 16.36 MiB | 6.54 MiB/s   Receiving objects:  46% (38265/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  47% (39097/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  48% (39928/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  49% (40760/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  50% (41592/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  51% (42424/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  52% (43256/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  53% (44087/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  54% (44919/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  55% (45751/83183), 22.28 MiB | 7.42 MiB/s   Receiving objects:  56% (46583/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  57% (47415/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  58% (48247/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  59% (49078/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  60% (49910/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  61% (50742/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  62% (51574/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  63% (52406/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  64% (53238/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  65% (54069/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  66% (54901/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  67% (55733/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  68% (56565/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  69% (57397/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  70% (58229/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  71% (59060/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  72% (59892/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  73% (60724/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  74% (61556/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  74% (61617/83183), 26.80 MiB | 7.65 MiB/s   Receiving objects:  75% (62388/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  76% (63220/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  77% (64051/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  78% (64883/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  79% (65715/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  80% (66547/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  81% (67379/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  82% (68211/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  83% (69042/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  84% (69874/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  85% (70706/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  86% (71538/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  87% (72370/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  88% (73202/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  89% (74033/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  90% (74865/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  91% (75697/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  92% (76529/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  93% (77361/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  94% (78193/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  95% (79024/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  96% (79856/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  97% (80688/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  98% (81520/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects:  99% (82352/83183), 32.52 MiB | 8.12 MiB/s   remote: Total 83183 (delta 57863), reused 83181 (delta 57862), pack-reused 0[K
+Receiving objects: 100% (83183/83183), 32.52 MiB | 8.12 MiB/s   Receiving objects: 100% (83183/83183), 37.89 MiB | 8.48 MiB/s, done.
+Resolving deltas:   0% (0/57863)   Resolving deltas:   1% (641/57863)   Resolving deltas:   2% (1230/57863)   Resolving deltas:   3% (1814/57863)   Resolving deltas:   4% (2315/57863)   Resolving deltas:   5% (3117/57863)   Resolving deltas:   6% (3476/57863)   Resolving deltas:   7% (4053/57863)   Resolving deltas:   8% (4655/57863)   Resolving deltas:   9% (5263/57863)   Resolving deltas:  10% (5804/57863)   Resolving deltas:  11% (6385/57863)   Resolving deltas:  12% (7011/57863)   Resolving deltas:  13% (7523/57863)   Resolving deltas:  14% (8105/57863)   Resolving deltas:  15% (8692/57863)   Resolving deltas:  17% (10035/57863)   Resolving deltas:  18% (10416/57863)   Resolving deltas:  19% (11067/57863)   Resolving deltas:  20% (11603/57863)   Resolving deltas:  21% (12168/57863)   Resolving deltas:  22% (12851/57863)   Resolving deltas:  23% (13456/57863)   Resolving deltas:  24% (13889/57863)   Resolving deltas:  25% (14504/57863)   Resolving deltas:  26% (15058/57863)   Resolving deltas:  27% (15626/57863)   Resolving deltas:  28% (16364/57863)   Resolving deltas:  29% (16846/57863)   Resolving deltas:  30% (17411/57863)   Resolving deltas:  31% (17942/57863)   Resolving deltas:  32% (18585/57863)   Resolving deltas:  33% (19126/57863)   Resolving deltas:  34% (19691/57863)   Resolving deltas:  35% (20262/57863)   Resolving deltas:  36% (21099/57863)   Resolving deltas:  37% (21460/57863)   Resolving deltas:  38% (21989/57863)   Resolving deltas:  39% (22634/57863)   Resolving deltas:  40% (23161/57863)   Resolving deltas:  41% (23763/57863)   Resolving deltas:  42% (24369/57863)   Resolving deltas:  43% (25126/57863)   Resolving deltas:  44% (25625/57863)   Resolving deltas:  45% (26045/57863)   Resolving deltas:  46% (26653/57863)   Resolving deltas:  47% (27203/57863)   Resolving deltas:  48% (27847/57863)   Resolving deltas:  49% (28673/57863)   Resolving deltas:  50% (28957/57863)   Resolving deltas:  51% (29533/57863)   Resolving deltas:  52% (30098/57863)   Resolving deltas:  53% (30812/57863)   Resolving deltas:  54% (31368/57863)   Resolving deltas:  55% (31841/57863)   Resolving deltas:  56% (32434/57863)   Resolving deltas:  57% (32988/57863)   Resolving deltas:  58% (33567/57863)   Resolving deltas:  59% (34162/57863)   Resolving deltas:  60% (34722/57863)   Resolving deltas:  61% (35298/57863)   Resolving deltas:  62% (35885/57863)   Resolving deltas:  63% (36458/57863)   Resolving deltas:  64% (37044/57863)   Resolving deltas:  65% (37613/57863)   Resolving deltas:  66% (38195/57863)   Resolving deltas:  67% (38781/57863)   Resolving deltas:  68% (39349/57863)   Resolving deltas:  69% (40015/57863)   Resolving deltas:  70% (40645/57863)   Resolving deltas:  71% (41237/57863)   Resolving deltas:  72% (41667/57863)   Resolving deltas:  73% (42258/57863)   Resolving deltas:  74% (42837/57863)   Resolving deltas:  75% (43400/57863)   Resolving deltas:  76% (43985/57863)   Resolving deltas:  77% (44563/57863)   Resolving deltas:  78% (45178/57863)   Resolving deltas:  79% (45712/57863)   Resolving deltas:  80% (46292/57863)   Resolving deltas:  81% (46954/57863)   Resolving deltas:  82% (47487/57863)   Resolving deltas:  83% (48030/57863)   Resolving deltas:  84% (48618/57863)   Resolving deltas:  85% (49192/57863)   Resolving deltas:  86% (49776/57863)   Resolving deltas:  87% (50364/57863)   Resolving deltas:  88% (50926/57863)   Resolving deltas:  89% (51574/57863)   Resolving deltas:  90% (52079/57863)   Resolving deltas:  91% (52656/57863)   Resolving deltas:  92% (53235/57863)   Resolving deltas:  93% (53823/57863)   Resolving deltas:  94% (54397/57863)   Resolving deltas:  95% (54971/57863)   Resolving deltas:  96% (55560/57863)   Resolving deltas:  97% (56194/57863)   Resolving deltas:  98% (56714/57863)   Resolving deltas:  99% (57285/57863)   Resolving deltas: 100% (57863/57863)   Resolving deltas: 100% (57863/57863), done.
+]0;mcather@matthew-pc:~/projects/comp-3500[01;32m[mcather@matthew-pc[01;37m comp-3500[01;32m]$[00m cd project-1/
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m touch README
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   task4.script[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31mREADME[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git add README 
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git diff[K[K[K[K[K[K[K[Kgit commit -m ""A"d"d"e"d" "R"E"A"[1P"[1P"[1P"R"E"A"D"M"E"
+[master 4794975] Added README
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m exit
+exit
+
+Script done on 2018-08-21 11:15:36-05:00
+Script started on 2018-08-21 11:15:56-05:00
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   README[m
+	[31mmodified:   task4.script[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git diff README 
+[?1h=[1mdiff --git a/README b/README[m[m
+[1mindex e69de29..88ee8aa 100644[m[m
+[1m--- a/README[m[m
+[1m+++ b/README[m[m
+[36m@@ -0,0 +1 @@[m[m
+[32m+[m[32mSome filler text[m[m
+[K[?1l>]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m gitt[K add README 
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git commit -m ""A"d"d"e"d" "s"o"m"e" "f"i"l"l"e"r" "t"e"x"t"
+[master c0b190d] Added some filler text
+ 1 file changed, 1 insertion(+)
+]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m git log
+[?1h=[33mcommit c0b190d7018f6bc4743e7b5d4b76a13d8b84c971[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m[m
+Author: Matthew <mrc0033@auburn.edu>[m
+Date:   Tue Aug 21 11:16:30 2018 -0500[m
+[m
+    Added some filler text[m
+[m
+[33mcommit 4794975fb4635401e19cf25058432664102f579e[m[m
+Author: Matthew <mrc0033@auburn.edu>[m
+Date:   Tue Aug 21 11:15:31 2018 -0500[m
+[m
+    Added README[m
+[m
+[33mcommit 5ed940665fc2a2bc83e038c78916997043c2c477[m[m
+Author: Matthew <mrc0033@auburn.edu>[m
+Date:   Tue Aug 21 11:13:33 2018 -0500[m
+[m
+    Initial project commit[m
+[K[?1l>]0;mcather@matthew-pc:~/projects/comp-3500/project-1[01;32m[mcather@matthew-pc[01;37m project-1[01;32m]$[00m exit
+exit
+
+Script done on 2018-08-21 11:16:37-05:00
