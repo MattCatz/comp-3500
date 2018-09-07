@@ -1,0 +1,16 @@
+Script started on Wed 05 Sep 2018 04:32:13 PM DST
+]0;mcather@Matt-Desktop: ~/projects/os161/os161mcather@Matt-Desktop:~/projects/os161/os161$ git init
+Initialized empty Git repository in /mnt/c/Users/Matthew/projects/os161/os161/.git/
+]0;mcather@Matt-Desktop: ~/projects/os161/os161mcather@Matt-Desktop:~/projects/os161/os161$ git remote add https://github.com/MattCatz/os161.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+]0;mcather@Matt-Desktop: ~/projects/os161/os161mcather@Matt-Desktop:~/projects/os161/os161$ git remote add https://github.com/MattCatz/os161.gitghttps://github.com/MattCatz/os161.gitihttps://github.com/MattCatz/os161.gitthttps://github.com/MattCatz/os161.git[Chttps://github.com/MattCatz/os161.gituhttps://github.com/MattCatz/os161.gitbhttps://github.com/MattCatz/os161.git https://github.com/MattCatz/os161.gi
