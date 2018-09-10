@@ -1,0 +1,21 @@
+ 1. #define sp $29 /* stack pointer */
+ 2. LAMEbus
+ 3. splhigh disables all interrupts and spl0 enables all interrupts
+ 4. u_int32_t will be the same size on all platforms vs int which can be redefined to different sizes.
+ 5. It returns the old priority level for interrupts
+ 6. #define SPL_HIGH 15
+ 7. #define HZ 10000
+ 8. vfs_setcurdir - change current directory of current thread by vnode
+    vfs_clearcurdir - change current directory of current thread to "none"
+    vfs_getcurdir - retrieve vnode of current directory of current thread
+    vfs_sync      - force all dirty buffers to disk
+    vfs_getroot   - get root vnode for the filesystem named DEVNAME
+    vfs_getdevname - get mounted device name for the filesystem passed in
+ 9. #define SFS_VOLNAME_SIZE 32 /* max length of volume name */
+10. #define SFS_NDIRECT 15 /* # of direct blocks in inode */
+11. fs_sync       - Flush all dirty buffers to disk.
+    fs_getvolname - Return volume name of filesystem.
+    fs_getroot    - Return root vnode of filesystem.
+    fs_unmount    - Attempt unmount of filesystem.
+12. void thread_sleep(const void *addr);
+13. typedef int32_t pid_t; /* Process ID */
