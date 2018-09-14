@@ -1,0 +1,326 @@
+Script started on Mon 10 Sep 2018 12:30:04 PM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;34m~[00m$ cd ~/cs161/src/kern/[K[K[K[K[K
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src[00m$ git diff
+[?1h=[1mdiff --git a/kern/main/hello.c b/kern/main/hello.c[m[m
+[1mindex 8d88c10..317109e 100644[m[m
+[1m--- a/kern/main/hello.c[m[m
+[1m+++ b/kern/main/hello.c[m[m
+[36m@@ -1,3 +1,4 @@[m[m
+ void hello() {[m[m
+[32m+[m[32m  // Matthew Cather[m[m
+   kprintf("Hello World\n");[m[m
+ }[m[m
+[K[?1l>]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src[00m$ git add kern/main/hello.c 
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src[00m$ git commit -m ""c"o"m"m"e"n"t" "[1P"
+[master 90b92f6] comment
+ 1 file changed, 1 insertion(+)
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src[00m$ exit
+exit
+
+Script done on Mon 10 Sep 2018 12:30:59 PM PDT
+Script started on Mon 10 Sep 2018 12:31:49 PM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;34m~[00m$ cd ~/scri[K[K[K[Kcs161/src/
+bin/     .git/    include/ kern/    lib/     man/     mk/      sbin/    testbin/
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;34m~[00m$ cd ~/cs161/src/kern/[K/conf/[K[K[K[Kcom[K[K[Kompile/ASST0/
+]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ make
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c ../../main/main.c
+../../main/main.c:1: error: expected declaration specifiers or ‘...’ before string constant
+../../main/main.c:1: warning: data definition has no type or storage class
+../../main/main.c:1: warning: type defaults to ‘int’ in declaration of ‘kprintf’
+../../main/main.c:3: warning: data definition has no type or storage class
+../../main/main.c:3: warning: type defaults to ‘int’ in declaration of ‘vfs_clearbootfs’
+../../main/main.c:4: warning: data definition has no type or storage class
+../../main/main.c:4: warning: type defaults to ‘int’ in declaration of ‘vfs_clearcurdir’
+../../main/main.c:5: warning: data definition has no type or storage class
+../../main/main.c:5: warning: type defaults to ‘int’ in declaration of ‘vfs_unmountall’
+../../main/main.c:7: warning: data definition has no type or storage class
+../../main/main.c:7: warning: type defaults to ‘int’ in declaration of ‘splhigh’
+../../main/main.c:9: warning: data definition has no type or storage class
+../../main/main.c:9: warning: type defaults to ‘int’ in declaration of ‘scheduler_shutdown’
+../../main/main.c:10: warning: data definition has no type or storage class
+../../main/main.c:10: warning: type defaults to ‘int’ in declaration of ‘thread_shutdown’
+../../main/main.c:11: error: expected identifier or ‘(’ before ‘}’ token
+../../main/main.c: In function ‘sys_reboot’:
+../../main/main.c:26: error: ‘RB_REBOOT’ undeclared (first use in this function)
+../../main/main.c:26: error: (Each undeclared identifier is reported only once
+../../main/main.c:26: error: for each function it appears in.)
+../../main/main.c:27: error: ‘RB_HALT’ undeclared (first use in this function)
+../../main/main.c:28: error: ‘RB_POWEROFF’ undeclared (first use in this function)
+../../main/main.c:31: error: ‘EINVAL’ undeclared (first use in this function)
+../../main/main.c:34: warning: implicit declaration of function ‘shutdown’
+../../main/main.c:39: warning: implicit declaration of function ‘md_halt’
+../../main/main.c:43: warning: implicit declaration of function ‘md_reboot’
+../../main/main.c:47: warning: implicit declaration of function ‘md_poweroff’
+../../main/main.c:51: warning: implicit declaration of function ‘panic’
+../../main/main.c: In function ‘kmain’:
+../../main/main.c:62: warning: implicit declaration of function ‘boot’
+../../main/main.c:64: warning: implicit declaration of function ‘menu’
+files.mk:378: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ git rm ../../main/main.c 
+error: the following file has local modifications:
+    kern/main/main.c
+(use --cached to keep the file, or -f to force removal)
+]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ git rm ../../main/main.c [C[C[C[1P[1P[1P
+]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ git rm ../../main/main.c [C[C[C[C[C[C[1P[1P[1@c[1@h[1@e[1@c[1@k[1@ou ../../main/main.c  [A]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ [C[C[C[C[C[C[C[C[C[C[Ct ../../main/main.c  [A]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ [C[C[C[C[C[C[C[C[C[C[C[C
+
+]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ make
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c ../../main/main.c
+../../main/main.c: In function ‘boot’:
+../../main/main.c:72: warning: implicit declaration of function ‘hello’
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c ../../main/hello.c
+../../main/hello.c: In function ‘hello’:
+../../main/hello.c:3: warning: implicit declaration of function ‘kprintf’
+../../conf/newvers.sh ASST0
+*** This is ASST0 build #5 ***
+cs161-gcc   -mno-abicalls -fno-pic -Wall -W -Wwrite-strings -g -nostdinc -I../../include -I../../dev -I.  -ffreestanding -D_KERNEL -G 0 -c vers.c
+cs161-ld   -nostdlib -Ttext 0x80001000 -T ../../arch/mips/conf/ldscript -G 0 console.o emu.o lser.o lhd.o pseudorand.o random.o ltimer.o lamebus.o lrandom.o beep.o ltrace.o rtclock.o ltimer_att.o con_lser.o lhd_att.o random_lrandom.o rtclock_ltimer.o ltrace_att.o lser_att.o lrandom_att.o emu_att.o beep_ltimer.o pseudorand_att.o sfs_vnode.o sfs_fs.o dumbvm.o sfs_io.o cache_mips1.o exception.o lamebus_mips.o interrupt.o pcb.o ram.o spl.o start.o switch.o syscall.o threadstart.o trap.o tlb_mips1.o mips-setjmp.o copyinout.o array.o bitmap.o queue.o kheap.o kprintf.o kgets.o misc.o ntoh.o __printf.o snprintf.o atoi.o bzero.o memcpy.o memmove.o strcat.o strchr.o strcmp.o strcpy.o strlen.o strrchr.o strtok_r.o init.o device.o vfscwd.o vfslist.o vfslookup.o vfspath.o vnode.o devnull.o hardclock.o synch.o scheduler.o thread.o main.o menu.o hello.o loadelf.o runprogram.o uio.o arraytest.o bitmaptest.o queuetest.o threadtest.o tt3.o synchtest.o malloctest.o fstest.o autoconf.o vers.o -o kernel
+cs161-size kernel
+   text	   data	    bss	    dec	    hex	filename
+ 160648	    448	   7668	 168764	  2933c	kernel
+]0;mcather@ssdnodes-32535: ~/cs161/src/kern/compile/ASST0[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/src/kern/compile/ASST0[00m$ exit
+exit
+
+Script done on Mon 10 Sep 2018 12:33:08 PM PDT
+Script started on Thu 13 Sep 2018 10:38:11 PM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;35m~[00m$ cd ~/[K[K[K[K[Kexit
+exit
+
+Script started on Thu 13 Sep 2018 10:46:58 PM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;35m~[00m$ cd ~/cs161/src/
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ git diff 90b92f6682cc977d6e3e00fa0be71bd4dbf49ca2 bd13573852a6983e2c04282408506bddb872f800
+[?1h=[1mdiff --git a/kern/fs/sfs/sfs_fs.c b/kern/fs/sfs/sfs_fs.c[m[m
+[1mindex 9a5bb46..8a26ad3 100644[m[m
+[1m--- a/kern/fs/sfs/sfs_fs.c[m[m
+[1m+++ b/kern/fs/sfs/sfs_fs.c[m[m
+[36m@@ -212,6 +212,8 @@[m [msfs_domount(void *options, struct device *dev, struct fs **ret)[m[m
+        int result;[m[m
+        struct sfs_fs *sfs;[m[m
+ [m[m
+[32m+[m[32m        DEBUG(DB_SFS, "Mounting SFS\n");[m[41m       [m[m
+[32m+[m[m
+        /* We don't pass any options through mount */[m[m
+        (void)options;[m[m
+ [m[m
+[1mdiff --git a/kern/lib/kheap.c b/kern/lib/kheap.c[m[m
+[1mindex 8af3e4a..ea78251 100644[m[m
+[1m--- a/kern/lib/kheap.c[m[m
+[1m+++ b/kern/lib/kheap.c[m[m
+[36m@@ -9,7 +9,7 @@[m [mfill_deadbeef(void *vptr, size_t len)[m[m
+ {[m[m
+        u_int32_t *ptr = vptr;[m[m
+        size_t i;[m[m
+[31m-[m[m
+[32m+[m       [32mDEBUG(DB_LOCORE, "Filling with dead beef");[m[41m     [m[m
+        for (i=0; i<len/sizeof(u_int32_t); i++) {[m[m
+                ptr[i] = 0xdeadbeef;[m[m
+        }[m[m
+[1mdiff --git a/kern/lib/queue.c b/kern/lib/queue.c[m[m
+[1mindex e990c70..fa01be6 100644[m[m
+[1m--- a/kern/lib/queue.c[m[m
+[1m+++ b/kern/lib/queue.c[m[m
+[36m@@ -18,6 +18,7 @@[m [mstatic[m[m
+ int[m[m
+ q_grow(struct queue *q, int targetsize)[m[m
+ {[m[m
+[32m+[m       [32mDEBUG(DB_THREADS, "Growing queue to %u\n", targetsize);[m[m
+        void **olddata = q->data;[m[m
+        int onr = q->nextread;[m[m
+        int onw = q->nextwrite;[m[m
+[36m@@ -53,6 +54,7 @@[m [mq_grow(struct queue *q, int targetsize)[m[m
+ struct queue *[m[m
+ q_create(int size)[m[m
+ {[m[m
+[32m+[m[32m        DEBUG(DB_THREADS, "Creating queue of length %u", size);[m[m
+        struct queue *q = kmalloc(sizeof(struct queue));[m[m
+        if (q==NULL) {[m[m
+                return NULL;[m[m
+[1mdiff --git a/kern/main/main.c b/kern/main/main.c[m[m
+[1mindex a2fbe8b..8d3d408 100644[m[m
+[1m--- a/kern/main/main.c[m[m
+[1m+++ b/kern/main/main.c[m[m
+[36m@@ -160,6 +160,7 @@[m [mint[m[m
+ kmain(char *arguments)[m[m
+ {[m[m
+        boot();[m[m
+[32m+[m[32m        DEBUG(DB_LOCORE, "DONE BOOTING");[m[m
+ [m[m
+        menu(arguments);[m[m
+ [m[m
+[1mdiff --git a/kern/thread/scheduler.c b/kern/thread/scheduler.c[m[m
+[1mindex 795f292..709ac6e 100644[m[m
+[1m--- a/kern/thread/scheduler.c[m[m
+[1m+++ b/kern/thread/scheduler.c[m[m
+[36m@@ -91,6 +91,7 @@[m [mscheduler(void)[m[m
+        assert(curspl>0);[m[m
+        [m[m
+        while (q_empty(runqueue)) {[m[m
+[32m+[m[32m                DEBUG(DB_THREADS, "CPU idling");[m[m
+                cpu_idle();[m[m
+        }[m[m
+ [m[m
+[1mdiff --git a/kern/thread/thread.c b/kern/thread/thread.c[m[m
+[1mindex d08f473..7287ad0 100644[m[m
+[1m--- a/kern/thread/thread.c[m[m
+[1m+++ b/kern/thread/thread.c[m[m
+[36m@@ -43,6 +43,7 @@[m [mstatic[m[m
+ struct thread *[m[m
+ thread_create(const char *name)[m[m
+ {[m[m
+[32m+[m[32m        DEBUG(DB_THREADS, "New thread\n");[m[m
+        struct thread *thread = kmalloc(sizeof(struct thread));[m[m
+        if (thread==NULL) {[m[m
+                return NULL;[m[m
+[36m@@ -76,6 +77,7 @@[m [mvoid[m[m
+ thread_destroy(struct thread *thread)[m[m
+:[K[K [KESCESC[KOO[KBB[K {[m[m
+:[K[K [KESCESC[KOO[KBB[K        assert(thread != curthread);[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_THREADS, "Destroying Thread\n");[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K        // If you add things to the thread structure, be sure to dispose of[m[m
+:[K[K [KESCESC[KOO[KBB[K        // them here or in thread_exit.[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mdiff --git a/kern/vm/addrspace.c b/kern/vm/addrspace.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1mindex 1cbadd9..8003e9e 100644[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m--- a/kern/vm/addrspace.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[1m+++ b/kern/vm/addrspace.c[m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -61,7 +61,7 @@[m [mas_activate(struct addrspace *as)[m[m
+:[K[K [KESCESC[KOO[KBB[K        /*[m[m
+:[K[K [KESCESC[KOO[KBB[K         * Write this.[m[m
+:[K[K [KESCESC[KOO[KBB[K         */[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_LOCORE, "Activating address space.");[m[m
+:[K[K [KESCESC[KOO[KBB[K        (void)as;  // suppress warning until code gets written[m[m
+:[K[K [KESCESC[KOO[KBB[K }[m[m
+:[K[K [KESCESC[KOO[KBB[K [m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -82,7 +82,7 @@[m [mas_define_region(struct addrspace *as, vaddr_t vaddr, size_t sz,[m[m
+:[K[K [KESCESC[KOO[KBB[K        /*[m[m
+:[K[K [KESCESC[KOO[KBB[K         * Write this.[m[m
+:[K[K [KESCESC[KOO[KBB[K         */[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m       [32mDEBUG(DB_LOCORE, "Setting up adress space");[m[41m    [m[m
+:[K[K [KESCESC[KOO[KBB[K        (void)as;[m[m
+:[K[K [KESCESC[KOO[KBB[K        (void)vaddr;[m[m
+:[K[K [KESCESC[KOO[KBB[K        (void)sz;[m[m
+:[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K[?1l>]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ exit
+exit
+
+Script done on Thu 13 Sep 2018 10:47:23 PM PDT
+Script started on Thu 13 Sep 2018 10:50:39 PM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;35m~[00m$ cd ~/cs161/src/
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ git tag asst0-end
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ git tag
+asst0
+asst0-end
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ git show
+[?1h=[33mcommit bd13573852a6983e2c04282408506bddb872f800[m[m
+Author: Matthew <14895427+MattCatz@users.noreply.github.com>[m
+Date:   Thu Sep 13 22:31:42 2018 -0700[m
+[m
+    project 2[m
+[m
+[1mdiff --git a/kern/fs/sfs/sfs_fs.c b/kern/fs/sfs/sfs_fs.c[m[m
+[1mindex 9a5bb46..8a26ad3 100644[m[m
+[1m--- a/kern/fs/sfs/sfs_fs.c[m[m
+[1m+++ b/kern/fs/sfs/sfs_fs.c[m[m
+[36m@@ -212,6 +212,8 @@[m [msfs_domount(void *options, struct device *dev, struct fs **ret)[m[m
+        int result;[m[m
+        struct sfs_fs *sfs;[m[m
+ [m[m
+[32m+[m[32m        DEBUG(DB_SFS, "Mounting SFS\n");[m[41m       [m[m
+[32m+[m[m
+        /* We don't pass any options through mount */[m[m
+        (void)options;[m[m
+ [m[m
+[1mdiff --git a/kern/lib/kheap.c b/kern/lib/kheap.c[m[m
+[1mindex 8af3e4a..ea78251 100644[m[m
+[1m--- a/kern/lib/kheap.c[m[m
+[1m+++ b/kern/lib/kheap.c[m[m
+[36m@@ -9,7 +9,7 @@[m [mfill_deadbeef(void *vptr, size_t len)[m[m
+ {[m[m
+        u_int32_t *ptr = vptr;[m[m
+        size_t i;[m[m
+[31m-[m[m
+[32m+[m       [32mDEBUG(DB_LOCORE, "Filling with dead beef");[m[41m     [m[m
+        for (i=0; i<len/sizeof(u_int32_t); i++) {[m[m
+                ptr[i] = 0xdeadbeef;[m[m
+        }[m[m
+[1mdiff --git a/kern/lib/queue.c b/kern/lib/queue.c[m[m
+[1mindex e990c70..fa01be6 100644[m[m
+[1m--- a/kern/lib/queue.c[m[m
+[1m+++ b/kern/lib/queue.c[m[m
+[36m@@ -18,6 +18,7 @@[m [mstatic[m[m
+ int[m[m
+ q_grow(struct queue *q, int targetsize)[m[m
+ {[m[m
+[32m+[m       [32mDEBUG(DB_THREADS, "Growing queue to %u\n", targetsize);[m[m
+        void **olddata = q->data;[m[m
+        int onr = q->nextread;[m[m
+        int onw = q->nextwrite;[m[m
+[36m@@ -53,6 +54,7 @@[m [mq_grow(struct queue *q, int targetsize)[m[m
+ struct queue *[m[m
+ q_create(int size)[m[m
+ {[m[m
+[32m+[m[32m        DEBUG(DB_THREADS, "Creating queue of length %u", size);[m[m
+        struct queue *q = kmalloc(sizeof(struct queue));[m[m
+        if (q==NULL) {[m[m
+                return NULL;[m[m
+[1mdiff --git a/kern/main/main.c b/kern/main/main.c[m[m
+[1mindex a2fbe8b..8d3d408 100644[m[m
+[1m--- a/kern/main/main.c[m[m
+[1m+++ b/kern/main/main.c[m[m
+[36m@@ -160,6 +160,7 @@[m [mint[m[m
+ kmain(char *arguments)[m[m
+ {[m[m
+        boot();[m[m
+[32m+[m[32m        DEBUG(DB_LOCORE, "DONE BOOTING");[m[m
+ [m[m
+        menu(arguments);[m[m
+ [m[m
+[1mdiff --git a/kern/thread/scheduler.c b/kern/thread/scheduler.c[m[m
+[1mindex 795f292..709ac6e 100644[m[m
+[1m--- a/kern/thread/scheduler.c[m[m
+[1m+++ b/kern/thread/scheduler.c[m[m
+[36m@@ -91,6 +91,7 @@[m [mscheduler(void)[m[m
+        assert(curspl>0);[m[m
+        [m[m
+        while (q_empty(runqueue)) {[m[m
+[32m+[m[32m                DEBUG(DB_THREADS, "CPU idling");[m[m
+                cpu_idle();[m[m
+        }[m[m
+ [m[m
+[1mdiff --git a/kern/thread/thread.c b/kern/thread/thread.c[m[m
+[1mindex d08f473..7287ad0 100644[m[m
+[1m--- a/kern/thread/thread.c[m[m
+[1m+++ b/kern/thread/thread.c[m[m
+[36m@@ -43,6 +43,7 @@[m [mstatic[m[m
+ struct thread *[m[m
+ thread_create(const char *name)[m[m
+ {[m[m
+:[K[K[?1l>]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ git push --tags
+Username for 'https://gitlab.eng.auburn.edu': mrc0033
+Password for 'https://mrc0033@gitlab.eng.auburn.edu': 
+Total 0 (delta 0), reused 0 (delta 0)
+To https://gitlab.eng.auburn.edu/MRC0033/os161.git
+ * [new tag]         asst0 -> asst0
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ git archive -o ../asst0/project2_source.tgz HEAD
+]0;mcather@ssdnodes-32535: ~/cs161/src[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161/src[00m$ cd ~/cs161/
+]0;mcather@ssdnodes-32535: ~/cs161[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161[00m$ ll
+total 532
+drwxrwxr-x  8 mcather mcather   4096 Sep 13 22:36 [0m[0;95m.[0m/
+drwxr-xr-x 17 mcather mcather   4096 Sep 13 22:46 [0;95m..[0m/
+drwxrwxr-x  2 mcather mcather   4096 Sep 10 11:22 [0;95massr0[0m/
+drwxrwxr-x  2 mcather mcather   4096 Sep 13 22:35 [0;95masst0[0m/
+-rw-rw-r--  1 mcather mcather 221747 Sep 13 22:36 [01;31masst0.tgz[0m
+drwxrwxr-x  2 mcather mcather   4096 Sep  5 22:18 [0;95mbin[0m/
+-rw-rw-r--  1 mcather mcather 282638 Sep 10 11:19 [01;31mos161-1.10.tar.gz[0m
+drwxrwxr-x 12 mcather mcather   4096 Sep 10 12:18 [0;95mroot[0m/
+drwxrwxr-x 11 mcather mcather   4096 Sep 13 22:46 [0;95msrc[0m/
+drwxrwxr-x 10 mcather mcather   4096 Sep  5 22:10 [0;95mtools[0m/
+]0;mcather@ssdnodes-32535: ~/cs161[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161[00m$ rm asst0.tgz 
+]0;mcather@ssdnodes-32535: ~/cs161[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161[00m$ tar vfcz asst0.tgz asst0
+asst0/
+asst0/project2_source.tgz
+]0;mcather@ssdnodes-32535: ~/cs161[01;32mmcather@ssdnodes-32535[00m:[01;35m~/cs161[00m$ exit
+exit
+
+Script done on Thu 13 Sep 2018 10:53:15 PM PDT

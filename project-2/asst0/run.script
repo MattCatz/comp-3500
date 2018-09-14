@@ -1,0 +1,42 @@
+Script started on Mon 10 Sep 2018 11:40:14 AM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;34m~[00m$ cd ~/cs161/root/
+]0;mcather@ssdnodes-32535: ~/cs161/root[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/root[00m$ ./sys161 kernel
+sys161: System/161 release 1.14, compiled Sep  7 2018 09:07:01
+
+OS/161 base system version 1.10
+Copyright (c) 2000, 2001, 2002, 2003
+   President and Fellows of Harvard College.  All rights reserved.
+
+Put-your-group-name-here's system version 0 (ASST0 #1)
+
+Cpu is MIPS r2000/r3000
+1872k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+hardclock on ltimer0 (100 hz)
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lser0 at lamebus0
+con0 at lser0
+pseudorand0 (virtual)
+
+OS/161 kernel [? for menu]: /sbin/poweroff
+/sbin/poweroff: Command not found
+Menu command failed: Invalid argument
+OS/161 kernel [? for menu]: [[ADD     p /sbin/poweroff
+Operation took 0.000162800 seconds
+OS/161 kernel [? for menu]: Shutting down.
+The system is halted.
+sys161: 692410787 cycles (6993998k, 18u, 685416771i)
+sys161: 3531 irqs 6 exns 0r/0w disk 43r/793w console 8r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 27.695470 seconds (25.0009 mhz)
+sys161: Elapsed virtual time: 27.696431480 seconds (25 mhz)
+]0;mcather@ssdnodes-32535: ~/cs161/root[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/root[00m$ exit
+exit
+
+Script done on Mon 10 Sep 2018 11:41:00 AM PDT

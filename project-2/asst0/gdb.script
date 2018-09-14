@@ -1,0 +1,36 @@
+Script started on Mon 10 Sep 2018 12:00:11 PM PDT
+]0;mcather@ssdnodes-32535: ~[01;32mmcather@ssdnodes-32535[00m:[01;34m~[00m$ cd ~/cs161/root/
+]0;mcather@ssdnodes-32535: ~/cs161/root[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/root[00m$ cs161-gs[Kdb kernel
+GNU gdb 6.6
+Copyright (C) 2006 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "--host=x86_64-unknown-linux-gnu --target=mips-elf"...
+(gdb) target remote unix:.sockets/gdb
+Remote debugging using unix:.sockets/gdb
+__start () at ../../arch/mips/mips/start.S:24
+24	../../arch/mips/mips/start.S: No such file or directory.
+	in ../../arch/mips/mips/start.S
+Current language:  auto; currently asm
+(gdb) break main
+Function "main" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) n
+(gdb) break main(gdb) target remote unix:.sockets/gdb[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ktarge[K[K[K[K[Kbreak mn[Kenu
+Breakpoint 1 at 0x8001ba6c
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0xffffffff8001ba6c in menu ()
+(gdb) where
+#0  0xffffffff8001ba6c in menu ()
+#1  0xffffffff8001a99c in kmain ()
+#2  0xffffffff8000d274 in __start () at ../../arch/mips/mips/start.S:163
+(gdb) detach
+Ending remote debugging.
+(gdb) quit
+]0;mcather@ssdnodes-32535: ~/cs161/root[01;32mmcather@ssdnodes-32535[00m:[01;34m~/cs161/root[00m$ exit
+exit
+
+Script done on Mon 10 Sep 2018 12:01:58 PM PDT
