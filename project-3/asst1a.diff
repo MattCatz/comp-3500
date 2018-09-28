@@ -1,0 +1,301 @@
+diff --git a/kern/include/synch.h b/kern/include/synch.h
+index 3583e78..9949dc2 100644
+--- a/kern/include/synch.h
++++ b/kern/include/synch.h
+@@ -6,6 +6,11 @@
+ #define _SYNCH_H_
+ 
+ /*
++ * Forward declaration of thread
++ */
++typedef struct thread thread;
++
++/*
+  * Dijkstra-style semaphore.
+  * Operations:
+  *     P (proberen): decrement count. If the count is 0, block until
+@@ -39,19 +44,20 @@ void              sem_destroy(struct semaphore *);
+  *    lock_do_i_hold - Return true if the current thread holds the lock; 
+  *                   false otherwise.
+  *
+- * These operations must be atomic. You get to write them.
++ * These operations are atomic.
+  *
+- * When the lock is created, no thread should be holding it. Likewise,
++ * When the lock is created, no thread is holding it. Likewise,
+  * when the lock is destroyed, no thread should be holding it.
+  *
+  * The name field is for easier debugging. A copy of the name is made
+  * internally.
++ *
++ * The owner field is a pointer to thread currently holding the lock.
+  */
+ 
+ struct lock {
+ 	char *name;
+-	// add what you need here
+-	// (don't forget to mark things volatile as needed)
++	thread *owner;
+ };
+ 
+ struct lock *lock_create(const char *name);
+@@ -78,7 +84,7 @@ void         lock_destroy(struct lock *);
+  * in. Note that under normal circumstances the same lock should be used
+  * on all operations with any particular CV.
+  *
+- * These operations must be atomic. You get to write them.
++ * These operations are atomic.
+  *
+  * These CVs are expected to support Mesa semantics, that is, no
+  * guarantees are made about scheduling.
+@@ -89,8 +95,6 @@ void         lock_destroy(struct lock *);
+ 
+ struct cv {
+ 	char *name;
+-	// add what you need here
+-	// (don't forget to mark things volatile as needed)
+ };
+ 
+ struct cv *cv_create(const char *name);
+diff --git a/kern/include/thread.h b/kern/include/thread.h
+index b051467..2bee852 100644
+--- a/kern/include/thread.h
++++ b/kern/include/thread.h
+@@ -91,6 +91,12 @@ void thread_sleep(const void *addr);
+ void thread_wakeup(const void *addr);
+ 
+ /*
++ * Cause the next thread found in the queue sleeping on the specified
++ * address to wake up. Interrupts must be disabled.
++ */
++void thread_wakeup_next(const void *addr);
++
++/*
+  * Return nonzero if there are any threads sleeping on the specified
+  * address. Meant only for diagnostic purposes.
+  */
+diff --git a/kern/thread/synch.c b/kern/thread/synch.c
+index cdc47a3..3e63cec 100644
+--- a/kern/thread/synch.c
++++ b/kern/thread/synch.c
+@@ -111,47 +111,71 @@ lock_create(const char *name)
+ 		kfree(lock);
+ 		return NULL;
+ 	}
+-	
+-	// add stuff here as needed
+-	
++
++	// Notice the lock is created with no owner
++	lock->owner = NULL;
++	DEBUG(DB_THREADS, "Created lock : %s\n", lock->name);	
+ 	return lock;
+ }
+ 
+ void
+ lock_destroy(struct lock *lock)
+ {
++	// We assert here to punish people who do stupid things
+ 	assert(lock != NULL);
++	assert(lock->owner == NULL);
+ 
+-	// add stuff here as needed
+-	
+ 	kfree(lock->name);
+ 	kfree(lock);
++	DEBUG(DB_THREADS, "Destroyed lock : %s\n", lock->name);	
+ }
+ 
+ void
+ lock_acquire(struct lock *lock)
+-{
+-	// Write this
++{	
++	int spl;
++
++	spl = splhigh();
++
++	assert(lock != NULL);
+ 
+-	(void)lock;  // suppress warning until code gets written
++	DEBUG(DB_THREADS, "Trying to acquire lock : %s\n", lock->name);	
++	while (lock->owner != NULL) {
++		thread_sleep(lock);
++	}
++
++	lock->owner = curthread;
++	DEBUG(DB_THREADS, "Thread %s acquired lock %s\n", curthread->t_name, lock->name);
++	splx(spl);	
+ }
+ 
+ void
+ lock_release(struct lock *lock)
+ {
+-	// Write this
++	int spl;
+ 
+-	(void)lock;  // suppress warning until code gets written
++	spl = splhigh();
++	
++	// We assert here to punish people who do stupid things
++	assert(lock != NULL);
++	assert(lock_do_i_hold(lock));
++
++	DEBUG(DB_THREADS, "Thread %s releasing lock %s\n", curthread->t_name, lock->name);	
++	lock->owner = NULL;
++
++	thread_wakeup(lock);
++
++	splx(spl);
+ }
+ 
+ int
+ lock_do_i_hold(struct lock *lock)
+ {
+-	// Write this
+-
+-	(void)lock;  // suppress warning until code gets written
+-
+-	return 1;    // dummy until code gets written
++	assert(lock != NULL);
++	if (lock->owner == curthread) {
++		return 1;
++	}
++	return 0;
+ }
+ 
+ ////////////////////////////////////////////////////////////
+@@ -173,44 +197,79 @@ cv_create(const char *name)
+ 	if (cv->name==NULL) {
+ 		kfree(cv);
+ 		return NULL;
+-	}
+-	
+-	// add stuff here as needed
++	}	
+ 	
++	DEBUG(DB_THREADS, "Created CV : %s\n", cv->name);	
+ 	return cv;
+ }
+ 
+ void
+ cv_destroy(struct cv *cv)
+ {
++	// We assert here to punish people who do stupid things
+ 	assert(cv != NULL);
++	assert(cv->name != NULL);
+ 
+-	// add stuff here as needed
+-	
+ 	kfree(cv->name);
+ 	kfree(cv);
++	DEBUG(DB_THREADS, "Destroyed CV: %s\n", cv->name);	
+ }
+ 
+ void
+ cv_wait(struct cv *cv, struct lock *lock)
+ {
+-	// Write this
+-	(void)cv;    // suppress warning until code gets written
+-	(void)lock;  // suppress warning until code gets written
++	int spl;
++
++	// We assert here to punish people who do stupid things
++	assert(cv != NULL);
++	assert(lock != NULL);
++
++	spl = splhigh();
++		
++	// The idea here is to release the lock and sleep until
++	// we are woken up, telling us that our conditional value
++	// has been met. Once woken up we try to aquire our lock
++	// again
++	lock_release(lock);
++	DEBUG(DB_THREADS, "Thread %s sleeping on CV %s", curthread->t_name, cv->name);
++	thread_sleep(cv);
++	DEBUG(DB_THREADS, "Thread %s waking on CV %s", curthread->t_name, cv->name);
++	lock_acquire(lock);
++	
++	splx(spl);	
+ }
+ 
+ void
+ cv_signal(struct cv *cv, struct lock *lock)
+ {
+-	// Write this
+-	(void)cv;    // suppress warning until code gets written
+-	(void)lock;  // suppress warning until code gets written
++	int spl;
++
++	// We assert here to punish people who do stupid things
++	assert(cv != NULL);
++	assert(lock != NULL);
++
++	spl = splhigh();
++
++	DEBUG(DB_THREADS, "Thread %s waking next on CV %s", curthread->t_name, cv->name);
++	thread_wakeup_next(cv);
++
++	splx(spl);
+ }
+ 
+ void
+ cv_broadcast(struct cv *cv, struct lock *lock)
+ {
+-	// Write this
+-	(void)cv;    // suppress warning until code gets written
+-	(void)lock;  // suppress warning until code gets written
++	int spl;
++
++	// We assert here to punish people who do stupid things
++	assert(cv != NULL);
++	assert(lock != NULL);
++
++	spl = splhigh();
++
++	DEBUG(DB_THREADS, "Thread %s waking everyone on CV %s", curthread->t_name, cv->name);
++	thread_wakeup(cv);
++
++	splx(spl);
+ }
++
+diff --git a/kern/thread/thread.c b/kern/thread/thread.c
+index d08f473..7422ef1 100644
+--- a/kern/thread/thread.c
++++ b/kern/thread/thread.c
+@@ -537,6 +537,35 @@ thread_wakeup(const void *addr)
+ 	}
+ }
+ 
++void
++thread_wakeup_next(const void *addr)
++{
++	int i, result;
++
++	assert(curspl>0);
++
++	for (i=0; i<array_getnum(sleepers); i++) {
++		struct thread *t = array_getguy(sleepers, i);
++		if (t->t_sleepaddr == addr) {
++			
++			// Remove from list
++			array_remove(sleepers, i);
++			
++			// must look at the same sleepers[i] again
++			i--;
++
++			/*
++			 * Because we preallocate during thread_fork,
++			 * this should never fail.
++			 */
++			result = make_runnable(t);
++			assert(result==0);
++			break;
++		}
++	}
++
++}
++
+ /*
+  * Return nonzero if there are any threads who are sleeping on "sleep address"
+  * ADDR. This is meant to be used only for diagnostic purposes.
