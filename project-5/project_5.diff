@@ -1,0 +1,224 @@
+diff --git a/kern/arch/mips/mips/syscall.c b/kern/arch/mips/mips/syscall.c
+index 60e431d..073fd3f 100644
+--- a/kern/arch/mips/mips/syscall.c
++++ b/kern/arch/mips/mips/syscall.c
+@@ -72,7 +72,13 @@ mips_syscall(struct trapframe *tf)
+ 		err = sys_reboot(tf->tf_a0);
+ 		break;
+ 
+-	    /* Add stuff here */
++	    case SYS_getpid:
++		err = sys_getpid(&retval);
++		break;
++ 
++	    case SYS_fork:
++		err = sys_fork(tf, &retval);
++		break;
+  
+ 	    default:
+ 		kprintf("Unknown syscall %d\n", callno);
+@@ -107,15 +113,20 @@ mips_syscall(struct trapframe *tf)
+ 	assert(curspl==0);
+ }
+ 
++/* Note this stuff goes here because it is machine dependent
++   hence the md prefix */
+ void
+ md_forkentry(struct trapframe *tf)
+ {
+ 	/*
+-	 * This function is provided as a reminder. You need to write
+-	 * both it and the code that calls it.
+-	 *
+-	 * Thus, you can trash it and do things another way if you prefer.
+-	 */
+-
+-	(void)tf;
++ 	* Succeed and return 0.
++ 	*/
++	tf->tf_v0 = 0;
++	tf->tf_a3 = 0;
++	
++	/*
++ 	* Advance the PC.
++ 	*/
++	tf->tf_epc += 4;
++	mips_usermode(tf);
+ }
+diff --git a/kern/conf/conf.kern b/kern/conf/conf.kern
+index 7d7d9c9..e8d84f3 100644
+--- a/kern/conf/conf.kern
++++ b/kern/conf/conf.kern
+@@ -382,6 +382,7 @@ file      main/menu.c
+ file      userprog/loadelf.c
+ file      userprog/runprogram.c
+ file      userprog/uio.c
++file      userprog/proc_syscalls.c
+ 
+ #
+ # Virtual memory system
+diff --git a/kern/include/syscall.h b/kern/include/syscall.h
+index 339514d..97b2e78 100644
+--- a/kern/include/syscall.h
++++ b/kern/include/syscall.h
+@@ -6,6 +6,6 @@
+  */
+ 
+ int sys_reboot(int code);
+-
++int sys_getpid(pid_t *retval);
+ 
+ #endif /* _SYSCALL_H_ */
+diff --git a/kern/include/thread.h b/kern/include/thread.h
+index 2bee852..64258b8 100644
+--- a/kern/include/thread.h
++++ b/kern/include/thread.h
+@@ -7,7 +7,7 @@
+ 
+ /* Get machine-dependent stuff */
+ #include <machine/pcb.h>
+-
++#include <types.h>
+ 
+ struct addrspace;
+ 
+@@ -37,6 +37,9 @@ struct thread {
+ 	 * and is manipulated by the virtual filesystem (VFS) code.
+ 	 */
+ 	struct vnode *t_cwd;
++
++	/* Holds the id of the process */
++	pid_t t_pid;
+ };
+ 
+ /* Call once during startup to allocate data structures. */
+@@ -61,7 +64,7 @@ void thread_shutdown(void);
+ int thread_fork(const char *name, 
+ 		void *data1, unsigned long data2, 
+ 		void (*func)(void *, unsigned long),
+-		struct thread **ret);
++		pid_t *childpid);
+ 
+ /*
+  * Cause the current thread to exit.
+diff --git a/kern/thread/thread.c b/kern/thread/thread.c
+index 7422ef1..5e72fbd 100644
+--- a/kern/thread/thread.c
++++ b/kern/thread/thread.c
+@@ -61,7 +61,11 @@ thread_create(const char *name)
+ 	
+ 	// If you add things to the thread structure, be sure to initialize
+ 	// them here.
+-	
++
++	// Becuase we do not have a PID manager right not we will just set 
++	// this to 0.	
++	thread->t_pid = 0;
++
+ 	return thread;
+ }
+ 
+@@ -232,7 +236,7 @@ int
+ thread_fork(const char *name, 
+ 	    void *data1, unsigned long data2,
+ 	    void (*func)(void *, unsigned long),
+-	    struct thread **ret)
++	    pid_t *childpid)
+ {
+ 	struct thread *newguy;
+ 	int s, result;
+@@ -306,14 +310,11 @@ thread_fork(const char *name,
+ 	splx(s);
+ 
+ 	/*
+-	 * Return new thread structure if it's wanted.  Note that
+-	 * using the thread structure from the parent thread should be
+-	 * done only with caution, because in general the child thread
+-	 * might exit at any time.
++	 * Return new thread's process ID if it's wanted.
++	 * Currently there is no PID manager so this will
++	 * always be 0.
+ 	 */
+-	if (ret != NULL) {
+-		*ret = newguy;
+-	}
++	childpid = newguy->t_pid;
+ 
+ 	return 0;
+ 
+diff --git a/kern/userprog/proc_syscalls.c b/kern/userprog/proc_syscalls.c
+new file mode 100644
+index 0000000..b0635cd
+--- /dev/null
++++ b/kern/userprog/proc_syscalls.c
+@@ -0,0 +1,70 @@
++#include <types.h>
++#include <syscall.h>
++#include <thread.h>
++#include <curthread.h>
++#include <kern/errno.h>
++#include <lib.h>
++#include <machine/trapframe.h>
++
++/*
++*  You may need the following four head files to
++*  implement other process related system calls.
++*/
++/*
++#include <pid.h>
++*/
++
++/*
++*  Sample implementation of sys_getpid(), which is called in
++*  src/kern/arch/mips/mips/syscall.c
++*/
++int
++sys_getpid(pid_t *retval)
++{
++	*retval = curthread->t_pid;
++	return 0;
++}
++
++/* Used in sys_fork */
++static
++void
++child_thread(void *vtf, unsigned long junk)
++{
++        struct trapframe mytf;
++        struct trapframe *ntf = vtf;
++        (void)junk;
++        /*
++         * Now copy the trapframe to our stack, so we can free the one
++        * that was malloced and use the one on our stack for going to
++        * userspace.
++        */
++        mytf = *ntf;
++        kfree(ntf);
++        md_forkentry(&mytf);
++}
++
++int
++sys_fork(struct trapframe * tf, int *retval) {
++	struct trapframe *new_tf;
++	int result;
++
++	new_tf = kmalloc(sizeof (struct trapframe));
++	if (new_tf == NULL) {
++		return ENOMEM;
++	}
++
++	*new_tf = *tf;
++	new_tf->tf_v0 = 0;
++	new_tf->tf_a3 = 0;
++	new_tf->tf_epc += 4;
++
++	result = thread_fork(curthread->t_name, (void *) new_tf, NULL, child_thread, retval);
++	
++	if (result != 0) {
++		kfree(new_tf);
++		return result;
++	}
++
++	return 0;
++}
++
